@@ -39,20 +39,20 @@ while (keepRunning) {
       if (numberTwo != 0) {
         result = numberOne / numberTwo;
         alert("A divisão é: " + result);
-        keepRunning = false;
       } else {
         alert("Não é possível dividir por 0");
       }
+      keepRunning = false;
       break;
 
     case "%":
       if (numberTwo != 0) {
         result = numberOne % numberTwo;
         alert("O resto da divisão é: " + result);
-        keepRunning = false;
       } else {
         alert("Não é possível dividir por 0");
       }
+      keepRunning = false;
       break;
 
     default:
