@@ -59,6 +59,7 @@ while (keepRunning) {
           keepRunning = false;
         } else {
           alert("Não é possível dividir por 0");
+          attempts++;
         }
         break;
 
@@ -69,6 +70,7 @@ while (keepRunning) {
           keepRunning = false;
         } else {
           alert("Não é possível dividir por 0");
+          attempts++;
         }
         break;
 
