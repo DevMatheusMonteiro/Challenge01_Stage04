@@ -1,63 +1,80 @@
 let numberOne, numberTwo, operation;
 
-numberOne = Number(prompt("Digite o primeiro número"));
-
-operation = prompt(`
-Informe a operação desejada:
-+: soma
--: subração
-*: multiplicação
-/: divisão
-%: resto da divisão`);
-
-numberTwo = Number(prompt("Digite o segundo número"));
-
 let keepRunning = true;
 let result;
+let message;
+
+function numberValidation(numberOne, numberTwo) {
+  let message = "Informe valores numéricos válidos!\n";
+
+  if (isNaN(numberOne) && isNaN(numberTwo)) {
+    return `${message}Os dois números estão inválidos!`;
+  } else if (isNaN(numberOne)) {
+    return `${message}O número um está inválido!`;
+  } else {
+    return `${message}O número dois está inválido!`;
+  }
+}
 
 while (keepRunning) {
-  switch (operation) {
-    case "+":
-      result = numberOne + numberTwo;
-      alert("A soma é: " + result);
-      keepRunning = false;
-      break;
+  numberOne = Number(prompt("Digite o primeiro número"));
 
-    case "-":
-      result = numberOne - numberTwo;
-      alert("A subtração é: " + result);
-      keepRunning = false;
-      break;
+  operation = prompt(`
+    Informe a operação desejada:
+    +: soma
+    -: subração
+    *: multiplicação
+    /: divisão
+    %: resto da divisão`);
 
-    case "*":
-      result = numberOne * numberTwo;
-      alert("A multiplicação é: " + result);
-      keepRunning = false;
-      break;
+  numberTwo = Number(prompt("Digite o segundo número"));
 
-    case "/":
-      if (numberTwo != 0) {
-        result = numberOne / numberTwo;
-        alert("A divisão é: " + result);
-      } else {
-        alert("Não é possível dividir por 0");
-      }
-      keepRunning = false;
-      break;
+  if (isNaN(numberOne) || isNaN(numberTwo)) {
+    alert(numberValidation(numberOne, numberTwo));
+  } else {
+    switch (operation) {
+      case "+":
+        result = numberOne + numberTwo;
+        alert("A soma é: " + result);
+        keepRunning = false;
+        break;
 
-    case "%":
-      if (numberTwo != 0) {
-        result = numberOne % numberTwo;
-        alert("O resto da divisão é: " + result);
-      } else {
-        alert("Não é possível dividir por 0");
-      }
-      keepRunning = false;
-      break;
+      case "-":
+        result = numberOne - numberTwo;
+        alert("A subtração é: " + result);
+        keepRunning = false;
+        break;
 
-    default:
-      alert("Operação inválida, tente novamente!");
-      break;
+      case "*":
+        result = numberOne * numberTwo;
+        alert("A multiplicação é: " + result);
+        keepRunning = false;
+        break;
+
+      case "/":
+        if (numberTwo != 0) {
+          result = numberOne / numberTwo;
+          alert("A divisão é: " + result);
+          keepRunning = false;
+        } else {
+          alert("Não é possível dividir por 0");
+        }
+        break;
+
+      case "%":
+        if (numberTwo != 0) {
+          result = numberOne % numberTwo;
+          alert("O resto da divisão é: " + result);
+          keepRunning = false;
+        } else {
+          alert("Não é possível dividir por 0");
+        }
+        break;
+
+      default:
+        alert("Operação inválida, tente novamente!");
+        break;
+    }
   }
 }
 
