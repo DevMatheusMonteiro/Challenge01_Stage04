@@ -2,7 +2,7 @@ let numberOne, numberTwo, operation;
 
 let keepRunning = true;
 let result;
-let message;
+let attempts = 0;
 
 function numberValidation(numberOne, numberTwo) {
   let message = "Informe valores numéricos válidos!\n";
@@ -31,6 +31,7 @@ while (keepRunning) {
 
   if (isNaN(numberOne) || isNaN(numberTwo)) {
     alert(numberValidation(numberOne, numberTwo));
+    attempts++;
   } else {
     switch (operation) {
       case "+":
@@ -73,21 +74,50 @@ while (keepRunning) {
 
       default:
         alert("Operação inválida, tente novamente!");
+        attempts++;
         break;
+    }
+  }
+
+  if (attempts == 3) {
+    let option;
+
+    while (option != 2 && option != 1) {
+      option = Number(
+        prompt(`
+        Deseja continuar tentando?
+        1 - Sim
+        2 - Não`)
+      );
+      switch (option) {
+        case 1:
+          attempts = 0;
+          break;
+        case 2:
+          keepRunning = false;
+          break;
+        default:
+          alert("Opção inválida, tente novamente!");
+          break;
+      }
     }
   }
 }
 
-if (numberOne == numberTwo) {
-  alert(`O primeiro número(${numberOne}) é igual ao segundo(${numberTwo}).`);
+if (attempts == 3) {
+  alert("Encerrado!");
 } else {
-  alert(
-    `O primeiro número(${numberOne}) é diferente do segundo(${numberTwo}).`
-  );
-}
+  if (numberOne == numberTwo) {
+    alert(`O primeiro número(${numberOne}) é igual ao segundo(${numberTwo}).`);
+  } else {
+    alert(
+      `O primeiro número(${numberOne}) é diferente do segundo(${numberTwo}).`
+    );
+  }
 
-if (result % 2 == 0) {
-  alert(`O resultado(${result}) é par`);
-} else {
-  alert(`O resultado(${result}) é ímpar`);
+  if (result % 2 == 0) {
+    alert(`O resultado(${result}) é par`);
+  } else {
+    alert(`O resultado(${result}) é ímpar`);
+  }
 }
